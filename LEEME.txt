@@ -1,0 +1,173 @@
+========================================
+LEEME - Gestor de fechas EXIF + ExifTool
+========================================
+
+1. ¿Qué hace este programa
+---------------------------
+
+Este programa es una herramienta de escritorio para Windows que utiliza
+ExifTool para arreglar y unificar las fechas de tus fotos y vídeos,
+a partir de los archivos JSON de Google Fotos (Google Takeout).
+
+En resumen, te ayuda a
+
+- Leer la estructura de carpetas de tu copia de Google Takeout.
+- Usar los JSON de Google Fotos para fijar las fechas correctas
+  en los archivos de imagenvídeo (FileCreateDate, DateTimeOriginal, etc.).
+- Detectar archivos que no tienen JSON asociado y generar un informe.
+- Buscar variantes de un mismo archivo (por ejemplo
+  -ha editado, (1), (copia), sufijos raros, etc.).
+- Cuando falta el JSON de una variante, puede copiar el JSON del archivo
+  base original y crear uno nuevo para esa variante.
+
+La idea es ahorrarte muchísimas horas de trabajo manual al organizar
+y corregir las fechas de grandes bibliotecas de fotos.
+
+
+2. Requisitos
+-------------
+
+- Sistema operativo Windows 10 o superior.
+- ExifTool para Windows (exiftool.exe).
+  - Suele venir ya incluido en este paquete, en la misma carpeta que el .exe.
+- Permisos de lecturaescritura sobre las carpetas donde tengas tus fotos
+  y JSON (por ejemplo, la carpeta TakeoutGoogle Fotos).
+
+No es necesario tener Python instalado si estás usando la versión .EXE
+incluida en este archivo.
+
+
+3. Contenido del paquete
+------------------------
+
+En el .zip deberías encontrar algo similar a
+
+- `GestorFechasExif.exe`   → el programa principal.
+- `exiftool.exe`           → ExifTool para Windows.
+- `LEEME.txt`              → este archivo.
+- (Opcional) otros archivos de configuración o logs.
+
+Importante Mantén todos estos archivos en la misma carpeta
+para que el programa pueda llamar a exiftool.exe correctamente.
+
+
+4. Preparar tus fotos  carpeta de trabajo
+------------------------------------------
+
+Lo ideal es trabajar sobre la estructura que descarga Google Takeout
+
+Ejemplo de ruta
+`EFOTOSTakeoutGoogle Fotos...`
+
+Dentro de esa carpeta suele haber
+
+- Archivos de imagenvídeo JPG, PNG, MP4, etc.
+- Archivos JSON con el mismo nombre de base que la fotovídeo
+  - `foto.jpg`
+  - `foto.jpg.json`
+
+El programa escaneará recursivamente (subcarpetas incluidas) y
+usará esos JSON para ajustar las fechas.
+
+
+5. Uso básico del programa
+--------------------------
+
+1) Descomprime el .zip en una carpeta de tu disco.
+   Ejemplo `EHerramientasGestorFechasExif`
+
+2) Asegúrate de que `GestorFechasExif.exe` y `exiftool.exe`
+   están en la misma carpeta.
+
+3) Haz primero una copia de seguridad de tus fotos y JSON.
+   - Muy recomendado trabajar sobre una copia, no sobre el original.
+
+4) Ejecuta `GestorFechasExif.exe` (doble clic).
+
+5) En la ventana del programa
+   - Selecciona la carpeta base donde está tu Takeout de Google Fotos.
+   - Configura las opciones que quieras (según las pestañasbotones
+     que aparezcan en la interfaz)
+        Actualizar fechas desde JSON.
+        Generar informe de archivos sin JSON.
+        Escanear variantes (-ha editado, (1), etc.).
+        Crear JSON para variantes a partir del archivo base.
+
+6) Inicia el proceso y espera a que termine.
+   - En la ventana de salida verás el progreso y mensajes de ExifTool.
+   - Al finalizar, revisa el informe (si se genera) para ver
+      cuántos archivos se han procesado,
+      cuántos no tenían JSON,
+      y posibles avisos o errores.
+
+7) Comprueba en un visor de fotos (o en el explorador) que las fechas
+   se han actualizado como esperabas.
+
+
+6. Advertencias importantes
+---------------------------
+
+- Haz siempre copia de seguridad antes de usar el programa.
+  Cualquier proceso que modifica metadatos y fechas puede ser difícil
+  de revertir si no tienes backup.
+
+- Este programa depende de ExifTool. Si exiftool.exe no está en la
+  misma carpeta que el .exe, o si se borra, el programa no podrá
+  realizar los cambios.
+
+- El resultado puede variar según
+  - La calidad y consistencia de los JSON descargados de Google.
+  - Cuántas variantes de archivos tengas (editados, renombrados, etc.).
+  - Permisos de archivos y carpetas.
+
+- El uso del programa es bajo tu propia responsabilidad.
+  El autor no se hace responsable de pérdidas de datos,
+  daños o errores derivados de su uso.
+
+
+7. Preguntas frecuentes (rápidas)
+---------------------------------
+
+- ¿Necesito internet para usarlo
+  No, todo funciona en local, con tus archivos y ExifTool.
+
+- ¿Puedo usarlo con cualquier carpeta, no solo Takeout
+  Sí, siempre que haya JSON compatibles con el formato de Google Fotos.
+
+- ¿Puedo pausar y reanudar
+  Depende de la versión exacta del programa. Como norma general,
+  es mejor dejar que termine cada proceso antes de cerrar.
+
+- ¿Qué pasa si un archivo no tiene JSON
+  El programa lo anotará en un informe de archivos sin JSON y,
+  en algunos casos, podrá crear un JSON para variantes copiando
+  el del archivo base original.
+
+
+8. ¿Te ha sido útil Invítame a un café ☕
+----------------------------------------
+
+Este programa se ofrece de forma gratuita con la intención de ayudar
+a quienes tienen grandes bibliotecas de fotos y vídeos y quieren
+poner orden en sus fechas y metadatos.
+
+Si te ha ahorrado tiempo o te ha parecido útil, puedes apoyarme con
+una pequeña donación por PayPal
+
+👉 PayPal [davidibiza151@gmail.com]
+
+(Escribe mi correo en PayPal en Enviar dinero y elige la cantidad
+que quieras. Cualquier ayuda se agradece muchísimo y motiva a seguir
+mejorando herramientas como esta).
+
+
+9. Contacto  comentarios
+-------------------------
+
+Si detectas algún error, tienes alguna sugerencia de mejora o quieres
+comentar algo sobre el programa, puedes indicarlo en el mismo sitio
+desde donde descargaste esta herramienta (foro, página web, etc.),
+o ponerte en contacto conmigo si allí aparece un medio de contacto.
+
+
+¡Gracias por usar el Gestor de fechas EXIF!
